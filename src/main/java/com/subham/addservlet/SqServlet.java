@@ -10,9 +10,10 @@ import java.io.PrintWriter;
 public class SqServlet extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
 
-        int result = (int)req.getAttribute("result");
+        int result = Integer.parseInt(req.getParameter("result"));
         result *= result;
-       PrintWriter out = res.getWriter();
-       out.println("result is "+ result);
+        PrintWriter out = res.getWriter();
+        out.println("result is "+ result);
+
     }
 }
