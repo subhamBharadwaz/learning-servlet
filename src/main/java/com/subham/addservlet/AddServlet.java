@@ -7,6 +7,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,8 +19,9 @@ public class AddServlet extends HttpServlet {
         int b = Integer.parseInt(req.getParameter("num2"));
         int result = a + b;
 
-
-        res.sendRedirect("sq?result="+result );
+        HttpSession session = req.getSession();
+        session.setAttribute("result",result);
+        res.sendRedirect("sq");
 
 //        RequestDispatcher rd = req.getRequestDispatcher("sq");
 //        rd.forward(req,res);
